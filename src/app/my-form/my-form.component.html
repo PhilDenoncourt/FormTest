@@ -1,0 +1,60 @@
+<form #theForm="ngForm">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-2">
+        <label for="playerName">Player name:</label>
+      </div>
+      <div class="col-md-10">
+        <div class="input-group">
+          <input type="text" id="playerName" name="playerName" required [(ngModel)]="playerName" minlength="3" class="form-control" #player="ngModel">
+          <span class="input-group-addon" *ngIf="!player.valid"><i class="glyphicon glyphicon-asterisk"></i> </span>
+          <span class="input-group-addon" *ngIf="player.valid"><i class="glyphicon glyphicon-check"></i> </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label for="playerPosition">Position:</label>
+      </div>
+      <div class="col-md-10">
+        <div class="input-group">
+          <select class="form-control" id="playerPosition" required [(ngModel)]="playerPosition" name="playerPosition" #position="ngModel">
+            <option *ngFor="let p of positions" [value]="p">{{p}}</option>
+          </select>
+          <span class="input-group-addon" *ngIf="!position.valid"><i class="glyphicon glyphicon-asterisk"></i> </span>
+          <span class="input-group-addon" *ngIf="position.valid"><i class="glyphicon glyphicon-check"></i> </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-2 radio">
+        <label class="radio-inline">
+          <input type="radio" value="left" name="bats"  [(ngModel)]="bats" #batValidity="ngModel" required>Bats Left
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="right" name="bats"  [(ngModel)]="bats" required >Bats Right
+        </label>
+        <i class="glyphicon glyphicon-asterisk" *ngIf="!batValidity.valid"></i>
+        <i class="glyphicon glyphicon-check" *ngIf="batValidity.valid"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-default">Save</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ul>
+          <li [hidden]="!theForm.valid">Valid</li>
+          <li [hidden]="!theForm.pristine">Pristine</li>
+          <li [hidden]="!theForm.dirty">Dirty</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</form>
+
