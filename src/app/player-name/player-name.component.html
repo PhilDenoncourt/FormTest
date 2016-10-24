@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-2">
+    <label for="playerName">Player name:</label>
+  </div>
+  <div class="col-md-10">
+    <div class="input-group">
+      <input type="text" id="playerName" name="playerName" required [(ngModel)]="playerName" minlength="3" class="form-control" #player="ngModel">
+      <span class="input-group-addon" *ngIf="!player.valid"><i class="glyphicon glyphicon-asterisk"></i> </span>
+      <span class="input-group-addon" *ngIf="player.valid"><i class="glyphicon glyphicon-check"></i> </span>
+    </div>
+  </div>
+</div>

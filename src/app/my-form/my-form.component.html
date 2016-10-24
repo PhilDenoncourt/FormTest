@@ -1,18 +1,6 @@
 <form #theForm="ngForm">
   <div class="form-group">
-    <div class="row">
-      <div class="col-md-2">
-        <label for="playerName">Player name:</label>
-      </div>
-      <div class="col-md-10">
-        <div class="input-group">
-          <input type="text" id="playerName" name="playerName" required [(ngModel)]="playerName" minlength="3" class="form-control" #player="ngModel">
-          <span class="input-group-addon" *ngIf="!player.valid"><i class="glyphicon glyphicon-asterisk"></i> </span>
-          <span class="input-group-addon" *ngIf="player.valid"><i class="glyphicon glyphicon-check"></i> </span>
-        </div>
-      </div>
-    </div>
-
+    <app-player-name [(ngModel)]="playerName" name="playerNameComp" required> </app-player-name>
     <div class="row">
       <div class="col-md-2">
         <label for="playerPosition">Position:</label>
@@ -51,6 +39,7 @@
           <li [hidden]="!theForm.valid">Valid</li>
           <li [hidden]="!theForm.pristine">Pristine</li>
           <li [hidden]="!theForm.dirty">Dirty</li>
+          <li>{{playerName}}</li>
         </ul>
       </div>
     </div>
